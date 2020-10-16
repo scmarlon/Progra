@@ -3,6 +3,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var tetsController = require('../prueba/controller/testController');
+
 var app = express();
 app.use(logger('dev'));
 app.use(express.json());
@@ -15,6 +17,8 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
     next();
 });
+
+app.use('/test',tetsController);
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500)
