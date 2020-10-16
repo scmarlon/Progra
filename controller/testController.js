@@ -1,23 +1,21 @@
 var express = require('express');
 var router = express.Router();
+var testQuery = require('../manager/testQuery');
 
 router.get('/getTest', (req, res) => {
     try {
         //console.log es como un print
-        console.log("Hola mundo");
         
-        /** 
-        reservationQuery.getActiveOrganizers(req.body)
-            .then(result => {
-                let response = {
-                    data: result.recordset
-                };
-                res.send({response, code: 200 });
-            })
-            .catch(err => {
-                res.send({ response:{data:err}, code: 406 });
-            })*/
+        testQuery.getPrueba().then(result=>{
+            
+            res.send(result); //cuandoes un get en ".query" y .body espara las demas para el post ejemplo
+
+        }).catch(err=>{
+            res.send(err);
+        });
+
     } catch (err) {
+    
         res.send({ response:{data:err}, code: 406 });
     }
 });

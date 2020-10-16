@@ -3,7 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var tetsController = require('../prueba/controller/testController');
+var tetsController = require('./controller/testController');
 
 var app = express();
 app.use(logger('dev'));
