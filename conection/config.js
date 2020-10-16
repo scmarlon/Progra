@@ -9,3 +9,5 @@ var config = {
         idleTimeoutMillis: 15000
     }
 }
+
+module.exports = config;
