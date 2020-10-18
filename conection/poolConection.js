@@ -2,11 +2,16 @@ const sql = require('mssql');
 var sqlconfig = require('./config');
 let dbConnPool = null;
 
-const getPoolConnection = () => {
-    console.log("ifff");
+const getPoolConnection = (req) => {
+    
     if (dbConnPool) return dbConnPool;
-    console.log("entro");
-    dbConnPool = new Promise((resolve, reject) => {
+
+        sqlconfig.database= req.BD;
+        sqlconfig.password= req.clave;
+        sqlconfig.user= req.usuario;
+        sqlconfig.server = req.servidor;
+    
+        dbConnPool = new Promise((resolve, reject) => {
         const conn = new sql.ConnectionPool(sqlconfig);
         conn.on('close', () => {
             dbConnPool = null;
