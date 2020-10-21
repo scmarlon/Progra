@@ -4,6 +4,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var tetsController = require('./controller/testController');
+var autogenerateController = require('./controller/autogenerateController');
+var generateController = require('./controller/generateController');
 
 var app = express();
 app.use(logger('dev'));
@@ -19,6 +21,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/test',tetsController);
+app.use('/autogenerate',autogenerateController);
+app.use('/generate',generateController);
 
 app.use(function(err, req, res, next) {
     res.status(err.status || 500)
