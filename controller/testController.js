@@ -2,8 +2,13 @@ var express = require('express');
 var router = express.Router();
 var testQuery = require('../manager/testQuery');
 
+var testQueryPG = require('../managerPG/testQueryPG');
+
 router.post('/getTest', (req, res) => {
     try {
+
+        
+
         console.log(req.body);
         
         testQuery.getPrueba(req.body).then(result=>{
@@ -24,7 +29,7 @@ router.get('/getNombre', (req, res) => {
     try {
         //console.log es como un print
         
-        testQuery.getNombre().then(result=>{
+        testQueryPG.getPruebapg().then(result=>{
             
             res.send(result); //cuando es un get en ".query" y .body espara las demas para el post ejemplo
 

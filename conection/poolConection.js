@@ -1,5 +1,7 @@
 const sql = require('mssql');
 var sqlconfig = require('./config');
+
+
 let dbConnPool = null;
 
 const getPoolConnection = (req) => {
