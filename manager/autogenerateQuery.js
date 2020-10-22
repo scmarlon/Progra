@@ -45,3 +45,18 @@ exports.autoGenerateRet = async (req) => {
         throw err;
     }
 }
+
+exports.autoGenerateUpd = async (req) => {
+    try {
+        //console.log("gg");
+        const pool = await poolConnection.getPoolConnection(req); //crea coneccion.
+        console.log("pollll");
+        const result = await pool.request()
+            .input('esquema',sql.VarChar(100),req.esquema)
+            .execute('autogeneracion.gen_update'); //sql 
+        sql.close();
+        return result;
+    } catch (err) {
+        throw err;
+    }
+}

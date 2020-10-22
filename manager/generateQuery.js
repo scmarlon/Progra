@@ -45,3 +45,19 @@ exports.generateRet = async (req) => {
         throw err;
     }
 }
+
+
+exports.generateUpd = async (req) => {
+    try {
+        //console.log("gg");
+        const pool = await poolConnection.getPoolConnection(req); //crea coneccion.
+        console.log("pollll");
+        const result = await pool.request()
+            .input('esquema',sql.VarChar(100),req.esquema)
+            .execute('generacion.gen_update'); //sql 
+        sql.close();
+        return result;
+    } catch (err) {
+        throw err;
+    }
+}
